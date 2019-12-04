@@ -1,0 +1,32 @@
+<div class='main-nav'>
+    <div class='navbar navbar-inverse'>
+        <div class='navbar-header'>
+          <button type='button' class='navbar-toggle' data-toggle='collapse' data-target='.navbar-collapse' [attr.aria-expanded]='isExpanded' (click)='isExpanded = !isExpanded'>
+            <!--toggle()-->
+            <span class='sr-only'>Toggle navigation</span>
+            <span class='icon-bar' *ngFor="let iconBar of [1, 2, 3]"></span>
+          </button>
+          <a class='navbar-brand' [routerLink]='["/"]'>AngularDrazExample</a>
+        </div>
+        <div class='clearfix'></div>
+        <div class='navbar-collapse collapse' [ngClass]='{ "in": isExpanded }'>
+            <ul class='nav navbar-nav'>
+                <li [routerLinkActive]='["link-active"]' [routerLinkActiveOptions]='{ exact: true }'>
+                    <a [routerLink]='["/"]' (click)='collapse()'>
+                        <span class='glyphicon glyphicon-home'></span> Create project
+                    </a>
+                </li>
+                <li [routerLinkActive]='["link-active"]'>
+                  <a [routerLink]='["/viewproject"]' (click)='collapse()'>
+                    <span class='glyphicon glyphicon-eye-open'></span> Preview project
+                  </a>
+                </li>
+                <li [routerLinkActive]='["link-active"]'>
+                    <a [routerLink]='["/stats"]' (click)='collapse()'>
+                        <span class='glyphicon glyphicon-th-list'></span> Statistics
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

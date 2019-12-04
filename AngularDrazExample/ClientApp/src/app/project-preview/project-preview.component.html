@@ -1,0 +1,13 @@
+<app-header>Preview project</app-header>
+<div class="app-content">
+  <div *ngIf="projectItem && projectItem.title != '' && fontItems.length > 0 else projectInfo" [ngStyle]="{'font-size.em': (projectItem.fontSize10Em/10), 'color': projectItem.fontColor, 'font-family': fontItems[projectItem.fontID].text}">
+    <h1 [innerText]="projectItem.title"></h1>
+    <p [innerHtml]="projectItem.description | safeHtml" style="white-space: pre-wrap;"></p>
+    <div class="row">
+      <div class="col-xs-12">
+        <app-map [showAddButton]="false" [newMarker]="projectItem.mapItem" (markerChanged)="null"></app-map>
+      </div>
+    </div>
+  </div>
+  <ng-template #projectInfo><h2>Create project first</h2></ng-template>
+</div>

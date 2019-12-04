@@ -1,0 +1,42 @@
+$border-radius: 6px;
+$accent: #4189C7;
+
+@import "~@progress/kendo-theme-default/scss/all.scss";
+/*@import "~bootstrap/scss/bootstrap.scss";*/
+
+body {
+  background-color: #E9EBEE;
+}
+.app-shadowcontainer {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, .1), 0 8px 16px rgba(0, 0, 0, .1);
+  box-sizing: border-box;
+  margin: 10px;
+  background-color: white;
+}
+.app-content-header {
+  border-radius: 7px 7px 0px 0px;
+  background: rgb(34,34,34);
+  background: linear-gradient(90deg, rgba(34,34,34,1) 0%, rgba(65,137,199,1) 35%, rgba(177,219,255,1) 100%);
+  color: white;
+  font-size: 2em;
+  padding: 10px 20px;
+}
+.app-content {
+  padding: 10px 20px 20px 20px;
+}
+.app-rounded {
+  border-radius: 7px;
+}
+.app-labelblock {
+  display: block;
+  max-width: 100%;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+.k-textbox-container {
+  width: 100%;
+}
+
+.app-notification {
+  min-width:250px;
+}

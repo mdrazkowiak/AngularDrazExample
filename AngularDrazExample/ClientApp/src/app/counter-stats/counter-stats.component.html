@@ -1,0 +1,15 @@
+<app-header>Statistics</app-header>
+<div class="app-content">
+  <kendo-chart *ngIf="projectItem && projectItem.title != '' else projectInfo">
+    <kendo-chart-title text="Your Statistics"></kendo-chart-title>
+    <kendo-chart-category-axis>
+      <kendo-chart-category-axis-item [categories]="['Clicks', 'KeyDowns']">
+      </kendo-chart-category-axis-item>
+    </kendo-chart-category-axis>
+    <kendo-chart-series>
+      <kendo-chart-series-item type="bar" [gap]="2" [spacing]=".25" [data]="[projectItem.clicksCounter, projectItem.keysCounter]">
+      </kendo-chart-series-item>
+    </kendo-chart-series>
+  </kendo-chart>
+  <ng-template #projectInfo><h2>Create project first</h2></ng-template>
+</div>

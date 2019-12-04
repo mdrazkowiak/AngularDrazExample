@@ -1,0 +1,71 @@
+<app-header>Create project</app-header>
+<div class="app-content" *ngIf="projectItem">
+  <div style="margin-bottom:10px;">
+    <div class="pull-left">
+      <p>On this page you can choose the project options that will be used in the project preview. Every click you make will be counted and click statistics will be displayed on the Statistics page.</p>
+    </div>
+    <div class="pull-right"><button type="submit" class="btn btn-primary" (click)="saveProject()">Save</button></div>
+    <div class='clearfix'></div>
+  </div>
+  <div class="panel-group">
+    <div class="panel panel-default" *ngFor="let panel of [1, 2, 3];" [ngClass]="{'panel-primary': selectedPanelIndex === panel}" (click)="selectedPanelIndex = panel">
+      <ng-container [ngSwitch]="panel">
+        <div *ngSwitchCase="1" class="panel-heading">Content</div>
+        <div *ngSwitchCase="1" class="panel-body">
+          <div class="row">
+            <div class="col-xs-12">
+              <kendo-textbox-container floatingLabel="Page title">
+                <input kendoTextBox [(ngModel)]="projectItem.title" />
+              </kendo-textbox-container>
+            </div>
+            <div class="col-xs-12">
+              <kendo-textbox-container floatingLabel="Page text">
+                <textarea kendoTextArea [(ngModel)]="projectItem.description"></textarea>
+              </kendo-textbox-container>
+            </div>
+          </div>
+        </div>
+
+        <div *ngSwitchCase="2" class="panel-heading">Appearance</div>
+        <div *ngSwitchCase="2" class="panel-body">
+          <div class="row">
+            <div class="col-xs-12 col-md-6 form-group">
+              <label>Font color</label>
+              <kendo-colorgradient [(value)]="projectItem.fontColor"></kendo-colorgradient>
+            </div>
+            <div class="col-xs-12 col-md-6 form-group">
+              <p class="app-labelblock">Font size ({{projectItem.fontSize10Em/10}} em)</p>
+              <kendo-slider [min]="8"
+                            [max]="20"
+                            [smallStep]="1"
+                            [(ngModel)]="projectItem.fontSize10Em">
+              </kendo-slider>
+            </div>
+            <div class="col-xs-12 col-md-6 form-group">
+              <p class="app-labelblock">Font family</p>
+              <kendo-dropdownlist [data]="fontItems"
+                                  textField="text"
+                                  valueField="id"
+                                  [valuePrimitive]="true"
+                                  [(ngModel)]="projectItem.fontID">
+              </kendo-dropdownlist>
+            </div>
+          </div>
+        </div>
+
+        <div *ngSwitchCase="3" class="panel-heading">Map</div>
+        <div *ngSwitchCase="3" class="panel-body">
+          <div class="row">
+            <div class="col-xs-12">
+              <app-map [showAddButton]="true" [newMarker]="projectItem.mapItem" (markerChanged)="markerChanged($event)"></app-map>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+  <div>
+    <div class="pull-right"><button type="submit" class="btn btn-primary" (click)="saveProject()">Save</button></div>
+    <div class='clearfix'></div>
+  </div>
+</div>
